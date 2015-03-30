@@ -580,7 +580,7 @@ class Room:
                 elif change['key'] == 'private':
                     self._config['private'] = change['value']
                 elif change['key'] == 'motd':
-                    self._config['motd'] = change.get('value') or ""
+                    self._config['motd'] = change.get('value', "")
                 else:
                     warnings.warn(
                         "unknown config key '{}'".format(
@@ -964,7 +964,7 @@ class File:
     def add_info(self, info):
         """Adds info to the file."""
         self._type = self._find_type(info)
-        self._info = info.get(self._type) or {}
+        self._info = info.get(self._type, {})
         self.name = info['name']
         self._size = info['size']
         self._expire_time = info['expires'] / 1000
