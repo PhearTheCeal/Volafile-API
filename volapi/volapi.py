@@ -956,7 +956,7 @@ class File:
     @property
     def info(self):
         """Returns info about the file"""
-        if not self._info:
+        if self._info is None:
             self.download_info()
             self._event.wait()
         return self._info
