@@ -47,7 +47,7 @@ from autobahn.asyncio.websocket import WebSocketClientProtocol
 
 from .multipart import Data
 
-__version__ = "1.2.4"
+__version__ = "1.2.5"
 
 BASE_URL = "https://volafile.io"
 BASE_ROOM_URL = BASE_URL + "/r/"
@@ -465,7 +465,7 @@ class Room:
             config = json.loads(text)
 
             self._config['title'] = config['name']
-            self._config['private'] = config['private'] == 'true'
+            self._config['private'] = config.get('private') == 'true'
             self._config['motd'] = config.get('motd')
             secret_key = config.get('secretToken')
 
